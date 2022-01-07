@@ -14,7 +14,7 @@ struct sqrt_decompositon{
     sqrt_decompositon(vector<int> a): sqrt_decompositon(a.size()) {
         for(int i = 0;i<n;i++){
             b[i/len] += a[i];
-            bmin[i/len] = min(a[i],b[i/len]);
+            bmin[i/len] = min(a[i],bmin[i/len]);
             arr[i] = a[i];
         }
     }
@@ -44,7 +44,7 @@ struct sqrt_decompositon{
             minim = min(minim,arr[i]);
         }
         for(int i = left+1;i<=right-1;i++){
-            minim = min(minim,b[i]);
+            minim = min(minim,bmin[i]);
         }
         for(int i =right*len;i<=r;i++){
             minim = min(minim,arr[i]);
