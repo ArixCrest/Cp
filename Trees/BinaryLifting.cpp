@@ -1,4 +1,7 @@
 vector<vector<int>> graph;
+// Note if you want to have some cases where the output 
+//of parent of 1 should be zero then u gotta have to use dfs(1,0) instead of df(1,1)
+// also the up stores 1,2,4,8... th ancestor
 struct binlift{
     int n,l;
     int timer = 0;
