@@ -2,20 +2,24 @@ vector<vector<int>> graph;
 // Note if you want to have some cases where the output 
 //of parent of 1 should be zero then u gotta have to use dfs(1,0) instead of df(1,1)
 // also the up stores 1,2,4,8... th ancestor
+//somehow dfs(1,0) gives weird results so use dfs(1,1) till its fixed
 struct binlift{
     int n,l;
     int timer = 0;
     vector<int> tin,tout;
     vector<vector<int>> up;
+    vector<int> depth;
     binlift(int n){
         tin.resize(n+1);
         tout.resize(n+1);
+        depth.resize(n+1,0);
         l = ceil(log2(n));
         up.assign(n+1,vector<int>(l+1));
     }
     void dfs(int cur,int par){
         up[cur][0] = par;
         tin[cur] = timer++;
+        depth[cur] = depth[par]+1;
         for(int i = 1;i<=l;++i){
             up[cur][i] = up[up[cur][i-1]][i-1];
         }
@@ -40,5 +44,8 @@ struct binlift{
             }
         }
         return up[u][0];
+    }
+    int dist(int u,int v){
+        return depth[u]+depth[v]-2*depth[lca(u,v)];
     }
 };
