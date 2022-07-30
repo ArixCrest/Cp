@@ -1,3 +1,5 @@
+// add values in range [l,r] && query of max in range [l,r]
+// Note: sum won't work.
 template<class T> struct LazySeg {
     const T ID = -INF; T comb(T a, T b) { return a>b?a:b; }
     int n,h; vector<T> seg,d;
