@@ -1,5 +1,4 @@
-// Assignment in range [l,r-1] && sum query in range [l,r-1]
-// there may be a way to directly get range [l,r] need review.
+// Assignment in range [l,r] && sum query in range [l,r]
 template<class T> struct LazySeg {
     const T ID = 0; T comb(T a, T b) { return a+b; }
     int n,h; vector<T> seg,d;
@@ -22,11 +21,14 @@ template<class T> struct LazySeg {
     void push(int l,int r){
         l += n,r += n-1;
         for(int s = h, k = (1<<(h-1)); s > 0; --s,k >>= 1){
+			cout<<(l>>s)<<" "<<(r>>s)<<'\n';
             for(int i = l>>s;i <= (r>>s) ; ++i ){
+				cout<<s<<" "<<k<<" "<<l<<" "<<r<<" "<<i<<'\n';
                 if(d[i]!=0) apply(2*i,d[i],k),apply(2*i+1,d[i],k),d[i] = 0;}
         }
     }
     void upd(int l,int r, T val){
+		r++; //added to take care of [l,r]
         if(val == 0) return;
         push(l,l+1),push(r-1,r);
         int l0 = l,r0 = r,k = 1;
@@ -37,6 +39,7 @@ template<class T> struct LazySeg {
         build(l0,l0+1),build(r0-1,r0);
     }
     T query(int l,int r){
+		r++; //added to take care of [l,r]
         push(l,l+1),push(r-1,r);
         T ra = ID,rb = ID;
         for (l += n, r += n; l < r; l /= 2, r /= 2) {
