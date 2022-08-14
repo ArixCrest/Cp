@@ -1,5 +1,7 @@
 // add values in range [l,r] && query of max in range [l,r]
 // Note: sum won't work
+// if you want to initialize values from an array then take leaves as values
+// and then pull the value up using the pull function for non leaf nodes.
 template<class T> struct LazySeg {
     const T ID = -INF; T comb(T a, T b) { return a>b?a:b; }
     int n,h; vector<T> seg,d;
