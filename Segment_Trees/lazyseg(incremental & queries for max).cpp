@@ -1,5 +1,5 @@
 // add values in range [l,r] && query of max in range [l,r]
-// Note: sum won't work.
+// Note: sum won't work
 template<class T> struct LazySeg {
     const T ID = -INF; T comb(T a, T b) { return a>b?a:b; }
     int n,h; vector<T> seg,d;
@@ -10,7 +10,7 @@ template<class T> struct LazySeg {
     void apply(int p,T val){ 
         seg[p]+=val;if(p<n) d[p]+=val;}
     void build(int p){ //if min max is used the d[p] stays but if add then you gotta add the size of interval
-        for(p /= 2;p > 1; p /=2) pull(p),seg[p] += d[p]; }
+        for(p /= 2;p >= 1; p /=2) pull(p),seg[p] += d[p]; }
     void push(int p){
         for(int s = h; s > 0; --s){
             int i = p>>s;
