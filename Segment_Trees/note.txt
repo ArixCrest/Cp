@@ -1,0 +1,7 @@
+Note the efficient form of segment tree does not works for tasks
+that require the left child to be right side of the array and right child to be the right side.
+Because if the tree is not complete then it leads to wrong answer because the left child might not 
+represent the left part of the array
+One such example when it fails is CSES Subarray sum queries.
+Workaround:
+Convert the tree into a complete tree by adding zeros or what is req at the end.
