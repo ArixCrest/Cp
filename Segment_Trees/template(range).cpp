@@ -4,10 +4,10 @@ template<class T> struct Seg { // comb(ID,b) = b
 	const T ID = 0; T comb(T a, T b) { return a+b; }
 	int n; vector<T> seg;
 	void init(int _n) { n = _n; seg.assign(2*n,ID); }
-	void push() {
+	void push() { //used to push all values to the leaves.
         for(int i = 1;i<n;++i){
             seg[i<<1] = comb(seg[i<<1],seg[i]);
-            seg[i<<1] = comb(seg[i<<1],seg[i]);
+            seg[i<<1|1] = comb(seg[i<<1|1],seg[i]);
             seg[i] = 0;
         }
     }
