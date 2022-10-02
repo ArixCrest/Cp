@@ -1,3 +1,4 @@
+// algorithm of Kasai, Arimura, Arikawa, Lee and Park 
 // LCP largest common prefix of the suffixes
 // lets say we have queires of the form lcp(i,j) and we want to calculate
 // LCP of suffixes starting at index i and j we can take the min of range [i,j] in the lcp array
