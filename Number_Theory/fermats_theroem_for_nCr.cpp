@@ -16,16 +16,13 @@ long long fast_exp(long long  a,long long b,long long m){
 	return res;
 }
 long long fermat(long long n, long long r, long long m){
+	if(r<0) return 0;
+	if(n==0 && r>0) return 0;
     if(n<r){
         return 0;
     }
     if(r==0){
         return 1;
-    }
-    long long factorial[n+1];
-    factorial[0]=1;
-    for(int i = 1;i<=n;i++){
-        factorial[i]=(factorial[i-1]*i)%m;
     }
     return (factorial[n]*fast_exp(factorial[r],m-2,m) % m *fast_exp(factorial[n-r],m-2,m)%m)%m;
 }

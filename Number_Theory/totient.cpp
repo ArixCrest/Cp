@@ -1,5 +1,7 @@
 // n logn implementation
 // there is another better nloglogn but this one is super simple.
+// all pairs such that gcd(a,b) = d and a+b = n is phi(n/d)
+// if gcd(a,b) = 1 and a+b = n then phi(n) basically the above is extension.
 vector<int> phi(mx);
 void phi(){
     phi[0] = 0;

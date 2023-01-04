@@ -1,7 +1,6 @@
 const long long modulo = 1e9+7;
 const int mx = 1e6+1;
 vector<ll> count(mx,0);
-
 long long fast_exp(long long  a,long long b,long long m){
 	long long res = 1;
 	a = a%m;
@@ -26,7 +25,6 @@ long long sum_divs(){
         k--;
         k = (k*fast_exp(x-1,modulo-2,modulo))%modulo;
         s = (sum_divs*k)%modulo;
-        //cout<<sum_divs<<"\n";
     }
     return s;
 }

@@ -1,14 +1,12 @@
 #warning "don't forget to generate sieve"
-vector<int> sieve(mx);
-vector<pair<int,int>> prime_factors;
-multiset<int> divs;
-void generate_factors(int index,int size,int vals){
-    if(index>=size){
+multiset<ll> divs;
+void generate_factors(vector<pair<int,int>> prime_factors,int index,ll vals){
+    if(index>=prime_factors.size()){
        return;
     }else{
-        int a = 1;
+        ll a = 1;
         for(int i = 0;i<=prime_factors[index].second;i++){
-            generate_factors(index+1,size,vals*a);
+            generate_factors(prime_factors,index+1,vals*a);
             a*=prime_factors[index].first;
         }
     }
@@ -16,6 +14,7 @@ void generate_factors(int index,int size,int vals){
 void Prime_factor(int k){
     int count = 0;
     int prev = -1;
+    vector<pair<int,int>> prime_factors;
     while(k>1){
         int a = sieve[k];
         if(prev!=a){
@@ -32,5 +31,5 @@ void Prime_factor(int k){
     if(count>0){
         prime_factors.push_back({prev,count});
     }
-    generate_factors(0,prime_factors.size(),1);
+    generate_factors(prime_factors,0,1);
 }
