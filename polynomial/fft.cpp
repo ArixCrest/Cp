@@ -1,4 +1,7 @@
-typedef complex<double> C;
+#define sz(x) int((x).size())
+using vl = vector<ll>;
+using vi = vector<int>;
+using C = complex<double>;
 void fft(vector<C>& a) {
 	int n = sz(a), L = 31 - __builtin_clz(n);
 	static vector<complex<long double>> R(2, 1);
@@ -20,8 +23,9 @@ void fft(vector<C>& a) {
 			a[i + j] += z;
 		}
 }
-
-typedef vector<ll> vl;
+// invoke using convMod<modulo>(A,B). If want to find conv between a and b
+// concatenate [a,a] and reverse b and then put it as A and B. 
+// The convolution value that you know will come from index sz(a) to end.
 template<int M> vector<ll> convMod(const vector<ll> &a, const vector<ll> &b) {
 	if (a.empty() || b.empty()) return {};
 	vector<ll> res(sz(a) + sz(b) - 1);
